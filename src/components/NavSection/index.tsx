@@ -47,7 +47,7 @@ export const NavSection: React.FC<NavSectionProps> = ({
               value={albumId}
               label="albumId"
               onChange={handleChange}>
-              <MenuItem value={0}>
+              <MenuItem value={'0'}>
                 <em>Все</em>
               </MenuItem>
               {Array(100)

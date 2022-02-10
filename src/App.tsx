@@ -22,7 +22,7 @@ export interface ImageItem {
 
 const App: React.FC = () => {
   const [images, setImages] = useState<ImageItem[]>([])
-  const [isloading, setIsloading] = useState<boolean>(true)
+  const [isloading, setIsloading] = useState(true)
   const [totalImages, setTotalImages] = useState(0)
   const [pageSize, setPageSize] = useState(25)
   const [totalPages, setTotalPages] = useState(0)
@@ -38,7 +38,7 @@ const App: React.FC = () => {
   }, [albumId, currentPage])
 
   useEffect(() => {
-    setTotalImages(albumId ? 50 : 5000)
+    setTotalImages(albumId !== '0' ? 50 : 5000)
   }, [albumId])
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const App: React.FC = () => {
     setIsloading(true)
     let { data } = await axios.get(
       baseUrl +
-        (albumId !== '0'
+        (+albumId !== 0
           ? `albums/${albumId}/photos?_page=${page}&_limit=${limit}`
           : `photos?_page=${page}&_limit=${limit}`),
     )

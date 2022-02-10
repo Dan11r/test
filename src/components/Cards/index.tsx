@@ -32,8 +32,8 @@ export const Cards: React.FC<CardsProps> = ({ images, onImgClick, deleteImage, i
             ))
           : Array(25)
               .fill(1)
-              .map((e) => (
-                <Skeleton sx={{ m: 1 }} variant="rectangular" width={150} height={150} />
+              .map((e, i) => (
+                <Skeleton key={i} sx={{ m: 1 }} variant="rectangular" width={150} height={150} />
               ))}
       </Box>
     </>
